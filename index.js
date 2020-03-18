@@ -1,11 +1,12 @@
 let express = require('express');
 let calculator = require('./calculator');
-
+let path = require('path');
 let bodyparser = require('body-parser');
 
 let app = express();
 
 app.use(bodyparser.urlencoded({extended: true}))
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (request, response) {
     response.sendFile(__dirname + '/index.html');
